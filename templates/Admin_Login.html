@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin_Login</title>
+</head>
+<body>
+    <center>
+       
+        <h2>Admin Login</h2>
+        <form action="{{ url_for('Admin_Login')}}" method="POST">
+            <table>
+                <tr>
+                    <td>Username: </td>
+                    <td><input type="text" name="Admin"></td>
+                </tr>
+                <tr>
+                    <td>Password: </td>
+                    <td><input type="password" name="Admin_Password"></td>
+                </tr>
+            </table>
+            <br>
+            <center>
+                <input type="submit" name="submit" value="Login">
+            </center>
+        </form>
+        {% if error %}
+        <p>{{error}}</p>
+        {% endif %}
+    </center>
+</body>
+</html>

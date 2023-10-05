@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="/static/main.css">
+    <title>Edit Show</title>
+</head>
+<body>
+    <header class="container" >
+        <div >
+           <h3>{{admin}} Dashboard</h3>
+        </div>
+        <div >
+            <h3>
+            <a href="/admin_logout">Logout</a>
+        </h3>
+        </div>
+    </header>
+    <center>
+        <h2>Edit Show</h2>
+        <form action="/{{admin}}/{{venue_name}}/{{show.show_id}}/edit_show" method="POST">
+            <textarea name="name" required="required" cols="50">{{show.show_name}}</textarea>
+            <br>
+            <br>
+            <textarea name="rating" required="required" cols="50">{{show.rating}}</textarea>
+            <br>
+            <br>
+            <textarea name="timings" required="required" cols="50">{{show.timing}}</textarea>
+            <br>
+            <br>
+            <textarea name="tags" required="required" cols="50">{{show.tag}}</textarea>
+            <br>
+            <br>
+            <textarea type="number" name="price" required="required" cols="50">{{show.price}}</textarea>
+            <br>
+            <br>
+            <button type="submit">Save</button>
+        </form>
+    </center>
+</body>
+</html>

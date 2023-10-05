@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="/static/main.css">
+    <title>{{venue_name}}</title>
+</head>
+<body>
+    <header class="container" >
+        <div >
+           <h3>{{admin}} Dashboard</h3>
+        </div>
+        <div >
+            <h3>
+            <a href="/{{admin}}/Admin_Dashboard">Home</a>
+            <a href="/admin_logout">Logout</a>
+        </h3>
+        </div>
+    </header>
+    <main>
+        <center>
+        <h3>{{venue.venue_name}}</h3>
+        <table style="width:30%">
+            <tr>
+                <th>Place</th>
+                <th>Location</th>
+                <th>Capacity</th>
+            </tr>
+            
+            <tr>
+                <td>{{venue.venue_place}}</td>
+                <td>{{venue.venue_location}}</td>
+                <td>{{venue.venue_capacity}}</td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        {% if shows %}
+        <table style="width:20%">
+            <tr>
+              <th>Shows</th>
+              <th>Timings</th>
+              <th>Actions</th>
+            </tr>
+            {% for show in shows%}
+            <tr>
+              <td>{{show.show_name}}</td>
+              <td>{{show.timing}}</td>
+              <td><a href="/{{admin}}/{{venue.venue_name}}/{{show.show_id}}/edit_show">Edit</a></td>
+              <td><a href="/{{admin}}/{{venue.venue_name}}/{{show.show_id}}/delete_show" onclick="{if(confirm('Are you sure about deleting the show?')){this.document.formname.submit();return true;}return false;}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </center>
+        <br>
+        <br>
+        <br>
+        <center><a href="/{{admin}}/{{venue.venue_name}}/add_show">+</a></center>
+        {% else %}
+        <center>
+        <p>No shows created</p>
+        <a href="/{{admin}}/{{venue.venue_name}}/add_show">+</a>
+        </center>
+        {% endif %}
+    </main>
+</body>
+</html>

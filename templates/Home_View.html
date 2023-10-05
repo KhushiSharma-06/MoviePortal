@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="/static/main.css">
+    <title>Home Venue</title>
+</head>
+<body>
+    <header class="container">
+        <div>
+         <h3> {{username}}</h3>
+         </div>
+         <div>
+             <h3>
+            <a href="/{{username}}/user_dashboard">Home</a>
+             <a href="/{{username}}/bookings">Bookings</a>
+             <a href="/user_logout">Logout</a>
+         </h3>
+         </div>
+         
+     </header>
+    <main>
+        <center>
+            <form method="POST" action="/{{username}}/user_search">
+                <label for="parameters">Search According:</label>
+                <select name="parameters" id="parameters">
+                    <option value="show_name">Movie</option>
+                    <option value="location">Location</option>
+                    <option value="price">Price</option>
+                    <option value="rating">Rating</option>
+                    <option value="tag">Tags</option>
+                </select>
+                <label for="Value">Search For:</label>
+                <input type="text" name="Value" placeholder="Search">
+                <input type="submit" name="submit" value="Save">
+            </form>
+            <h3>{{venue_name}}</h3>
+            {% if shows %}
+            <table style="width:20%">
+                <tr>
+                  <th>Show</th>
+                  <th>Timings</th>
+                  <th>Book</th>
+                </tr>
+                {% for show in shows%}
+                <tr>
+                  <td>{{show.show_name}}</td>
+                  <td>{{show.timing}}</td>
+                  <td><a href="/{{username}}/{{show.venue_rel}}/{{show.show_id}}/book_tickets">Book</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            </center>
+        {% else %}
+        <center>
+        <p>No shows</p>
+        </center>
+        {% endif %}
+    </main>
+</body>
+</html>

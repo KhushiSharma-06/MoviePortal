@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="/static/main.css">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <header class="container">
+        <div>
+         <h3> {{username}}</h3>
+         </div>
+         <div>
+             <h3>
+                <a href="/{{username}}/user_dashboard">Home</a>
+                <a href="/{{username}}/bookings">Bookings</a>
+             <a href="/user_logout">Logout</a>
+            </h3>
+         </div>
+         
+     </header>
+    <main>
+        <center>
+        <h3>Theaters Near You</p></h3>
+        {% if venues %}
+        <table style="width:35%">
+            <tr>
+              <th>Venue Name</th>
+              <th>Location</th>
+              <th>Book</th>
+            </tr>
+            {% for venue in venues%}
+            <tr>
+              <td>{{venue.venue_name}}</td>
+              <td>{{venue.venue_place}}</td>
+              <td><a href="/{{username}}/{{venue.venue_name}}/home_view">View Shows</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </center>
+        {% else %}
+        <center>
+        <p>Sorry!! No Theaters Available Near You :(</p>
+        </center>
+        {% endif %}
+    </main>
+</body>
+</html>

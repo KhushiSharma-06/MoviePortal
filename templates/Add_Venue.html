@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="/static/main.css">
+    <title>Add Venue</title>
+</head>
+<body>
+    <header class="container" >
+        <div >
+           <h3>{{admin}} Dashboard</h3>
+        </div>
+        <div >
+            <h3>
+            <a href="/admin_logout">Logout</a>
+        </h3>
+        </div>
+    </header>
+    <center>
+        <h2>Add Venue</h2>
+        
+        <form action="/{{admin}}/add_venue" method="POST">
+            <table>
+                <tr>
+                    <td>Name: </td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <td>Place: </td>
+                    <td><input type="text" name="place"></td>
+                </tr>
+                <tr>
+                    <td>Location: </td>
+                    <td><input type="text" name="location"></td>
+                </tr>
+                <tr>
+                    <td>Capacity: </td>
+                    <td><input type="number" name="capacity"></td>
+                </tr>
+                </table>
+                <br>
+                <center>
+            
+                    <td><input type="submit" name="submit" value="Save"></td>
+                
+                </center>
+            
+        </form>
+    </center>
+</body>
+</html>

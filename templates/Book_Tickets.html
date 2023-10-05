@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="/static/main.css">
+    <title>Book Tickets</title>
+</head>
+<body>
+    
+    <header class="container">
+        <div>
+         <h3> {{username}}</h3>
+         </div>
+         <div>
+             <h3>
+             <a href="/{{username}}/bookings">Bookings</a>
+             <a href="/user_logout">Logout</a>
+         </h3>
+         </div>
+         
+     </header>
+    {% if error %}
+    <center>
+        <h2>{{error}}</h2>
+    </center>
+    {% else %}
+    <center>
+        <h2>Book Tickets</h2>
+        <br>
+        <br>
+        <div><h3>{{show.venue_rel}}</h3></div>
+        <div><h3>{{show.timing}}</h3></div>
+        <br>
+        <br>
+        {% if available_seats%}
+        <h3>Available Tickets: {{available_seats}}</h3>
+        <form action="/{{username}}/{{show.venue_rel}}/{{show.show_id}}/book_tickets" method="POST">
+            <textarea name="tickets" type="number" required="required" cols="50"></textarea>
+            <br>
+            <br>
+            <br>
+            <textarea name="price" type="number" required="required" cols="50">{{show.price}}</textarea>
+            <br>
+            <br>
+            <br>
+            <button type="submit">Confirm Booking</button>
+        </form>
+        {% else %}
+        <h2>HOUSEFULL !!</h2>
+        {% endif %}
+    </center>
+    {% endif %}
+</body>
+</html>

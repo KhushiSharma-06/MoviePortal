@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="/static/main.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <header class="container" >
+        <div >
+           <h3>{{admin}} Dashboard</h3>
+        </div>
+        <div >
+            <h3>
+            <a href="/admin_logout">Logout</a>
+        </h3>
+        </div>
+    </header>
+    <main>
+        <center>
+            <form method="POST" action="/{{admin}}/admin_search">
+                <label for="parameters">Search According:</label>
+                <select name="parameters" id="parameters">
+                    <option value="location">Location</option>
+                    <option value="name">Name</option>
+                    <option value="capacity">Capacity</option>
+                </select>
+                <label for="Value">Search For:</label>
+                <input type="text" name="Value" placeholder="Search">
+                <input type="submit" name="submit" value="Search">
+            </form>
+        {% if venues %}
+        <table style="width:50%">
+            <tr>
+              <th>Venue Name</th>
+              <th>Actions</th>
+              <th></th>
+            </tr>
+            {% for venue in venues%}
+            <tr>
+              <td><a href="/{{admin}}/{{venue.venue_name}}/show_venue">{{venue.venue_name}}</a></td>
+              <td><a href="/{{admin}}/{{venue.venue_name}}/edit_venue">Edit</a></td>
+              <td><a href="/{{admin}}/{{venue.venue_name}}/delete_venue" onclick="{if(confirm('Are you sure about deleting the venue?')){this.document.formname.submit();return true;}return false;}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </center>
+        <br>
+        <br>
+        <br>
+        <center><a href="/{{admin}}/add_venue">+</a></center>
+        {% else %}
+        <center>
+        <p>No venues created</p>
+        <a href="/{{admin}}/add_venue">+</a>
+        </center>
+        {% endif %}
+    </main>
+</body>
+
+</html>

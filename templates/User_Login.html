@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User_Login</title>
+    <style type="text/css">
+        input[type="submit"]{cursor:pointer;}
+    </style>
+</head>
+<body>
+    
+        <td  style="text-align: left"><input type="submit" name="submit" value="Login"></td>
+        <td  style="text-align: left">Not yet a member?<a href="/signup">Sign Up</a></td>
+    
+    <center>
+        
+        <h2>User Login</h2>
+        <form action="" method="POST">
+            <table>
+                <tr>
+                    <td>Username: </td>
+                    <td><input type="text" name="username"></td>
+                </tr>
+                <tr>
+                    <td>Password: </td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+               
+            </table>
+        </form>
+        {% if error %}
+        <p>{{error}}</p>
+        {% endif %}
+    </center>
+    
+</body>
+</html>

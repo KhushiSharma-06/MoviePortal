@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="/static/main.css">
+    <title>Edit Venue</title>
+</head>
+<body>
+    <header class="container" >
+        <div >
+           <h3>{{admin}} Dashboard</h3>
+        </div>
+        <div >
+            <h3>
+            <a href="/admin_logout">Logout</a>
+        </h3>
+        </div>
+    </header>
+    <center>
+        <h2>Edit Venue</h2>
+        <form action="/{{admin}}/{{venue.venue_name}}/edit_venue" method="POST">
+            <textarea name="name" required="required" cols="50">{{venue.venue_name}}</textarea>
+            <br>
+            <br>
+            <textarea name="place" required="required" cols="50">{{venue.venue_place}}</textarea>
+            <br>
+            <br>
+            <textarea name="location" required="required" cols="50">{{venue.venue_location}}</textarea>
+            <br>
+            <br>
+            <textarea type="number" name="capacity" required="required" cols="50">{{venue.venue_capacity}}</textarea>
+            <br>
+            <br>
+            <button type="submit">Save</button>
+        </form>
+    </center>
+</body>
+</html>
