@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="/static/main.css">
+    <title>Add Show</title>
+</head>
+<body>
+    <header class="container" >
+        <div >
+           <h3>{{admin}} Dashboard</h3>
+        </div>
+        <div >
+            <h3>
+            <a href="/admin_logout">Logout</a>
+        </h3>
+        </div>
+    </header>
+    <center>
+        <h2>Add Show</h2>
+        
+        <form action="/{{admin}}/{{venue_name}}/add_show" method="POST">
+            <table>
+                <tr>
+                    <td>Name: </td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <td>Rating: </td>
+                    <td><input type="text" name="rating"></td>
+                </tr>
+                <tr>
+                    <td>Timings: </td>
+                    <td><input type="text" name="timings"></td>
+                </tr>
+                <tr>
+                    <td>Tags: </td>
+                    <td><input type="text" name="tags"></td>
+                </tr>
+                <tr>
+                    <td>Price: </td>
+                    <td><input type="number" name="price"></td>
+                </tr>
+                </table>
+                <br>
+                <center>
+                    <input type="submit" name="submit" value="Add">
+                </center>
+           
+        </form>
+    </center>
+</body>
+</html>
